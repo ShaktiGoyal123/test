@@ -1,0 +1,31 @@
+https://spring-cloud-broker.cfapps.io/actuator/info
+
+
+curl https://spring-cloud-broker.cfapps.io/actuator/info
+
+
+
+cd ~/workspace/assignment-submission
+./gradlew cloudNativeDeveloperDistributedSystemWithServiceDiscovery -PregistrationServerUrl=https://registration-pal-anupramji.cfapps.io -PbacklogServerUrl=https://backlog-pal-anupramji.cfapps.io -PallocationsServerUrl=https://allocations-pal-anupramji.cfapps.io -PtimesheetsServerUrl=https://timesheets-pal-anupramji.cfapps.io
+
+
+
+
+cd ~/workspace/assignment-submission
+./gradlew cloudNativeDeveloperDistributedSystemWithCircuitBreaker \
+    -PregistrationServerUrl=https://registration-pal-anupramji.cfapps.io \
+    -PbacklogServerUrl=https://backlog-pal-anupramji.cfapps.io \
+    -PallocationsServerUrl=https://allocations-pal-anupramji.cfapps.io \
+    -PtimesheetsServerUrl=https://timesheets-pal-anupramji.cfapps.io
+
+===================
+
+
+Circuit Breaker:
+
+curl -i -XPOST -H"Content-Type: application/json" localhost:8083/projects -d"{\"name\": \"Project A\", \"accountId\": \"1\"}"
+
+
+
+pal-tracker-distributed-auth
+

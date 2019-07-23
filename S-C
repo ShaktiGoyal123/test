@@ -1,0 +1,256 @@
+
+
+/home/pal-2/dev/tomee
+
+rm -rf /home/pal-2/dev/tomee/webapps/*
+rm -rf /home/pal-2/dev/tomee/data/*
+
+
+cp moviefun.war ~/dev/tomee/webapps/
+
+/home/pal-2/dev/tomee/bin/catalina.sh run
+
+~/dev/tomee/bin/catalina.sh run
+
+moviefun-lean-otter.cfapps.io
+moviefun-lean-otter.cfapps.io
+
+MOVIE_FUN_URL=http://moviefun-lean-otter.cfapps.io mvn test
+
+cf push moviefun -p target/moviefun.war -b https://github.com/cloudfoundry-community/tomee-buildpack/releases/download/v4.16.1/tomee-buildpack-v4.16.1.zip --random-route
+
+
+cf create-service cleardb spark movies-mysql 
+
+cf create-service cleardb spark albums-mysql
+
+cf create-service cleardb spark struts-mysql
+
+cf bs struts struts-mysql
+	
+
+cf create-service cloudamqp lemur rabbit
+
+
+
+curl https://spring-cloud-broker
+
+**** Mysql PCF*****
+
+cf mysql movies-mysql
+
+
+********************
+
+
+./gradlew replatformingBuildpacks -PmovieFunUrl=https://moviefun-lean-otter.cfapps.io
+
+
+curl https://spring-cloud-service-broker.cfapps.io/actuator/info
+
+
+2.0.9-build.5
+
+MoviesBean
+
+    private final MoviesBean movie;
+
+    public AccountController(MoviesBean movie) {
+        this.movie = movie;
+    }
+
+
+  moviesBean.addMovie(new Movie("Wedding Crashers", "David Dobkin", "Comedy", 7, 2005));
+  moviesBean.addMovie(new Movie("Starsky & Hutch", "Todd Phillips", "Action", 6, 2004));
+  moviesBean.addMovie(new Movie("Shanghai Knights", "David Dobkin", "Action", 6, 2003));
+  moviesBean.addMovie(new Movie("I-Spy", "Betty Thomas", "Adventure", 5, 2002));
+  moviesBean.addMovie(new Movie("The Royal Tenenbaums", "Wes Anderson", "Comedy", 8, 2001));
+  moviesBean.addMovie(new Movie("Zoolander", "Ben Stiller", "Comedy", 6, 2001));
+  moviesBean.addMovie(new Movie("Shanghai Noon", "Tom Dey", "Comedy", 7, 2000));
+
+
+<%
+      List<Movie> movies = moviesBean.getMovies();
+      for (Iterator<Movie> iterator = movies.iterator(); iterator.hasNext(); ) {
+        Movie movie = (Movie) iterator.next();
+    %>
+    <tr>
+      <td><%=movie.getTitle()%>
+      </td>
+      <td><%=movie.getDirector()%>
+      </td>
+      <td><%=movie.getGenre()%>
+      </td>
+    </tr>
+
+    <%
+      }
+    %>
+
+<%
+  InitialContext initialContext = new InitialContext();
+  MoviesBean moviesBean = (MoviesBean) initialContext.lookup("java:comp/env/org.superbiz.moviefun.ActionServlet/moviesBean");
+
+%>
+
+<%@ page import="org.superbiz.moviefun.MoviesBean" %>
+
+
+
+cf push moviefun -p target/moviefun.war -b java_buildpack --random-route
+
+
+./gradlew replatformingSpringBootification -PmovieFunUrl=https://moviefun-lean-otter.cfapps.io
+
+
+
+
+mvn clean package -DskipTests
+cf push moviefun -p target/moviefun.war -b ${JAVA_BUILDPACK_NAME} --random-route
+
+
+export VCAP_SERVICES='{"p-mysql": [{"credentials": {"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/albums?user=root"}, "name": "albums-mysql"}, {"credentials": {"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/movies?user=root"}, "name": "movies-mysql"}]}'
+
+
+album-database
+movies-database
+
+mvn spring-boot:run
+
+
+cd ~/workspace/assignment-submission
+
+./gradlew replatformingManagingDataSources -PmovieFunUrl=https://moviefun-lean-otter.cfapps.io
+
+cd ~/workspace/assignment-submission
+./gradlew replatformingRemovingReadsFromFileSystem -PmovieFunUrl=https://moviefun-lean-otter.cfapps.io
+
+
+git push --set-upstream origin spring-bootification-work
+
+git push --set-upstream origin two-data-sources-work
+
+git push --set-upstream origin two-data-sources-work
+
+git push --set-upstream origin write-to-blobstore-work
+
+
+git push --set-upstream origin logging-work
+
+
+git push --set-upstream origin background-jobs-work
+
+
+git push --set-upstream origin background-jobs-rabbit-work
+
+
+
+=======================================
+
+minio server ~/shared
+
+Endpoint:  http://10.221.245.11:9000  http://127.0.0.1:9000    
+AccessKey: VC3BT4CORURYY1BEXZL1 
+SecretKey: 2IqIwr81vFjMeituhIDQW8NgcEy2ycO7NdE81wuq 
+
+Browser Access:
+   http://10.221.245.11:9000  http://127.0.0.1:9000    
+
+Command-line Access: https://docs.min.io/docs/minio-client-quickstart-guide
+   $ mc config host add myminio http://10.221.245.11:9000 VC3BT4CORURYY1BEXZL1 2IqIwr81vFjMeituhIDQW8NgcEy2ycO7NdE81wuq
+
+Object API (Amazon S3 compatible):
+   Go:         https://docs.min.io/docs/golang-client-quickstart-guide
+   Java:       https://docs.min.io/docs/java-client-quickstart-guide
+   Python:     https://docs.min.io/docs/python-client-quickstart-guide
+   JavaScript: https://docs.min.io/docs/javascript-client-quickstart-guide
+   .NET:       https://docs.min.io/docs/dotnet-client-quickstart-guide
+
+
+
+
+export VCAP_SERVICES='{"user-provided": [{"credentials": {"access_key_id": "VC3BT4CORURYY1BEXZL1", "bucket": "moviefun", "secret_access_key": "2IqIwr81vFjMeituhIDQW8NgcEy2ycO7NdE81wuq", "endpoint": "http://127.0.0.1:9000"}, "name": "photo-storage"}]}'
+
+cf cups photo-storage -p '{"access_key_id":"AKIAI3EUL5OHTJBAR4PA","bucket":"dell-emc-student-artifacts-2","secret_access_key":"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"}'
+
+
+
+aws s3 cp albums.csv s3://dell-emc-student-artifacts-2/
+
+
+movies-mysql
+cf mysql movies-mysql < db/schema.ddl
+
+
+
+./gradlew replatformingRemovingPersistenceToFileSystem -PmovieFunUrl=https://moviefun-lean-otter.cfapps.io
+
+
+
+
+logs4.papertrailapp.com:43507
+
+cf create-user-provided-service paper-trail -l syslog-tls://logs4.papertrailapp.com:43507
+
+cf bind-service moviefun paper-trail
+
+
+
+cd ~/workspace/assignment-submission
+
+./gradlew replatformingLogging -PmovieFunUrl=https://moviefun-lean-otter.cfapps.io
+
+
+cd ~/workspace/assignment-submission
+./gradlew replatformingBackgroundJobsWithDb -PmovieFunUrl=https://${MOVIE_FUN_APP_URL}
+
+cd ~/workspace/assignment-submission
+./gradlew replatformingBackgroundJobsWithAmqp -PmovieFunUrl=https://moviefun-lean-otter.cfapps.io
+
+
+cd ~/workspace/assignment-submission
+./gradlew replatformingRemoveInstanceSpecificState -PsessionStateUrl=https://remove-session-state-comedic-gorilla.cfapps.io
+
+
+curl -X POST http://localhost:8080/rabbit -d ""
+
+cf bind-service moviefun rabbit
+
+
+curl -X POST https://moviefun-lean-otter.cfapps.io/rabbit -d ""
+
+
+cf push remove-session-state -p target/remove-session-state-lab.war -i 2 --random-route --no-start
+
+
+import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
+import org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+
+import javax.servlet.Filter;
+
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+
+
+==============
+
+
+cd ~/workspace/assignment-submission
+./gradlew replatformingStruts -PstrutsAppUrl=https://struts-reflective-nyala.cfapps.io/
+
+
+aws s3 rm s3://${YOUR_BUCKET_GUID}/ --recursive
+
+
+
+
+
+
+
+

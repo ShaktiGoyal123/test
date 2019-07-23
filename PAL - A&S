@@ -1,0 +1,74 @@
+
+
+
+flyway -url="jdbc:mysql://localhost:3306/tracker_test" -locations=filesystem:databases/tracker clean migrate
+
+
+flyway -url="jdbc:mysql://localhost:3306/tracker_test" -locations=filesystem:databases/tracker clean migrate
+
+
+
+
+
+flyway -url="jdbc:mysql://localhost:3306/tracker_dev" -locations=filesystem:databases/tracker/migrations clean migrate
+
+flyway -url="jdbc:mysql://localhost:3306/tracker_test" -locations=filesystem:databases/tracker/migrations clean migrate
+
+
+./gradlew cloudNativeDeveloperDatabaseMigrations -PserverUrl=https://pal-tracker-as1.cfapps.io
+
+
+./gradlew cloudNativeDeveloperDatabaseAccess -PserverUrl=https://pal-tracker-as1.cfapps.io
+
+./gradlew cloudNativeDeveloperHealthMonitoring -PserverUrl=https://pal-tracker-as1.cfapps.io/actuator
+
+
+
+./gradlew cloudNativeDeveloperScaling -PserverUrl=https://pal-tracker-as1.cfapps.io
+
+
+
+GET https://pal-tracker-as1.cfapps.io/time-entries
+POST https://pal-tracker-as1.cfapps.io/time-entries
+GET https://pal-tracker-as1.cfapps.io/time-entries/1
+PUT https://pal-tracker-as1.cfapps.io/time-entries/1
+GET https://pal-tracker-as1.cfapps.io/time-entries/1
+DELETE https://pal-tracker-as1.cfapps.io/time-entries/1
+GET https://pal-tracker-as1.cfapps.io/time-entries/1
+
+
+Sample Request:
+{
+"projectId":"300",
+"userId":"136",
+"date":"2017-01-09",
+"hours":"1"
+}
+
+
+./gradlew cloudNativeDeveloperDatabaseAccess -PserverUrl=https://pal-tracker-as1.cfapps.io
+
+==========================================================
+
+
+
+
+https://tracker-allocations-anupramji.apps.chicken.pal.pivotal.io
+
+
+cf check-route https://tracker-allocations-anupramji.apps.chicken.pal.pivotal.io cfapps.io
+
+
+
+./gradlew cloudNativeDeveloperDistributedSystemDeployment \
+    -PregistrationServerUrl=https://registration-pal-anupramji.cfapps.io \
+    -PbacklogServerUrl=https://backlog-pal-anupramji.cfapps.io \
+    -PallocationsServerUrl=https://allocations-pal-anupramji.cfapps.io \
+    -PtimesheetsServerUrl=https://timesheets-pal-anupramji.cfapps.io
+
+
+
+
+
+
+
