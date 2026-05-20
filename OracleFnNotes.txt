@@ -1,0 +1,17 @@
+inside container
+DOCKER_HOST=ssh://user@host.containers.internal:50204/run/user/1000/podman/podman.sock
+
+ssh://user@127.0.0.1:50204/run/user/1000/podman/podman.sock
+
+
+Oracle Functions
+https://www.youtube.com/watch?v=-jMenpaEibo
+https://www.enricopesce.it/oci-functions-a-python-example/
+https://github.com/fnproject/tutorials/tree/master/python/intro
+
+Function in Oracle Cloud Indfrastructure
+https://youtu.be/-jMenpaEibo?si=ZXvMILWyV8fwmf4c
+https://www.enricopesce.it/oci-functions-a-python-example/
+https://github.com/oracle-samples/oracle-functions-samples
+https://dev.to/farisdurrani/how-to-use-functions-in-oci-python-4chb
+
